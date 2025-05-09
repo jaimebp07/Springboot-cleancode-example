@@ -19,14 +19,13 @@ public class ParkingService implements RegisterParkingUseCase, RetrieveParkingUs
     private final UpdateParkingUseCase updateParkingUseCase;
     private final DeleteParkingUseCase deleteParkingUseCase;
 
-
     @Override
-    public boolean detelete(String id) {
-        return deleteParkingUseCase.detelete(id);
+    public boolean deleteById(String id) {
+        return deleteParkingUseCase.deleteById(id);
     }
 
     @Override
-    public boolean update(String id, ParkingLot parkingLot) {
+    public Optional<ParkingLot> update(String id, ParkingLot parkingLot) {
        return updateParkingUseCase.update(id, parkingLot);
     }
 

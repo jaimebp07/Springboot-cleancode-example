@@ -1,19 +1,22 @@
 package com.cleancode.parking.aplication.usecase;
 
+import java.util.Optional;
+
 import com.cleancode.parking.domain.ParkingLot;
 import com.cleancode.parking.domain.port.in.UpdateParkingUseCase;
+import com.cleancode.parking.domain.port.out.ParkingRepositoryPort;
 
 public class UpdateParkingUseCaseImpl implements UpdateParkingUseCase {
 
-    private final UpdateParkingUseCase updateParkingUseCase;
+    private final ParkingRepositoryPort parkingRepositoryPort;
 
-    public UpdateParkingUseCaseImpl(UpdateParkingUseCase updateParkingUseCase){
-        this.updateParkingUseCase = updateParkingUseCase;;
+    public UpdateParkingUseCaseImpl(ParkingRepositoryPort parkingRepositoryPort){
+        this.parkingRepositoryPort = parkingRepositoryPort;;
     }
 
     @Override
-    public boolean update(String id, ParkingLot parkingLot) {
-        return updateParkingUseCase.update(id, parkingLot);
+    public Optional<ParkingLot> update(String id, ParkingLot parkingLot) {
+        return this.parkingRepositoryPort.update(id, parkingLot);
     }
 
 }
